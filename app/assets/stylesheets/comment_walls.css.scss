@@ -1,0 +1,46 @@
+// Place all the styles related to the CommentWalls controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment-post{
+	width: 100%;
+	float: left;
+
+	.comment-body{
+		width: 70%;
+		float: left;
+		margin-left: 10px;
+	}
+
+	.submit-comment{
+		margin-left: 10px;
+	}
+}
+
+.comment-posted{
+	margin-top: 10px;
+	width: 100%;
+	float: left;
+
+	p{
+		width: 90%;
+		img{
+		  float: left;
+		  margin-top: 3px;
+		  display: block;
+	  }
+	  textarea{
+		  margin-top: 3px;
+		  margin-left: 5px;
+		  width:80%;
+		  /*border: none;*/
+		  -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+      -moz-box-sizing: border-box; /* FF1+ */
+      box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/;
+	  }
+	}
+}
+
+.comment-posted-even{
+	margin-left: 40px;
+}

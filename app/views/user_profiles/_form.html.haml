@@ -1,0 +1,14 @@
+= simple_form_for(@user_profile, html: {:multipart => true, :class => 'form-horizontal'}) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :firstname
+    = f.input :lastname
+    = f.input :description, input_html: {:size => "50x6"}
+    = f.input :job, collection: ["IT", "Teacher", "Artist", "Doctor", "Worker"], include_blank: false
+    = f.input :gender, as: :select, collection: [[true, 'Male'], [false, 'Female']], value_method: :first, label_method: :last, include_blank: false
+    = f.input :birthday
+    = f.input :avatar, as: :file
+
+  .form-actions
+    = f.button :submit

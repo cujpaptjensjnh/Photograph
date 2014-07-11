@@ -1,0 +1,13 @@
+= render "/user_profiles/profile"
+
+.display-grid-photos
+  - @photos.each do |photo|
+    %p.grid-photos
+      = link_to image_tag(photo.image_url(:thumb).to_s, :alt => photo.name), photo
+      - if user_signed_in? && current_user.id == photo.user.id
+        = link_to 'Edit', edit_photo_path(photo)
+        \|
+        = link_to 'Destroy', photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+= paginate @photos, :theme => 'twitter-bootstrap'
+

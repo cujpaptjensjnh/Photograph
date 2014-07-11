@@ -1,0 +1,16 @@
+= simple_form_for(@photo, :html => {:multipart => true, :class => 'form-horizontal'}) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, :required => true, input_html: {id: "photo-name"}
+    = f.input :info, input_html: {:size => "50x6"}
+    = f.association :category, prompt: "Choose category", :required => true, input_html: {id: "category-id"}
+    = f.input :image, as: :file, :required => true, input_html: {id: "image-path"}
+    / = f.association :user
+    / f.association :roles,   as: :check_boxes
+    / f.association :company, label_method: :company_name, value_method: :id, include_blank: false
+    / f.association :company, collection: Company.active.all(order: 'name'), prompt: "Choose a Company"
+    / f.association :company, as: :radio_buttons
+
+  .form-actions
+    = f.button :submit, id: "submit-photo"

@@ -1,0 +1,40 @@
+= image_tag(@user_profile.avatar_url.to_s, alt: "user avatar", class: "avatar-display")
+
+.user_profile-info
+  %p
+    %b Firstname:
+    = @user_profile.firstname
+  %p
+    %b Lastname:
+    = @user_profile.lastname
+  %p
+    %b Description:
+    = @user_profile.description
+  %p
+    %b Job:
+    = @user_profile.job
+  %p
+    %b Gender:
+    = @user_profile.gender
+  %p
+    %b Birthday:
+    = @user_profile.birthday
+  - if user_signed_in?
+    - if current_user.id == @user_profile.user_id
+      %p= link_to "edit", edit_user_profile_path(@user_profile), class: "btn btn-default btn-xs"
+    - else
+      - if @is_followed_by_current_user == nil
+        %p
+          = simple_form_for @follower do |f|
+            = f.hidden_field :followee_id, :value => @user_profile.user_id
+            = f.submit "follow", :id => "Follow"
+      - else
+        %p= link_to "unfollow", follower_path(@is_followed_by_current_user), class: "btn btn-default btn-xs",
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :authenticity_token => form_authenticity_token
+.user-nav
+  %ul
+    %li= link_to "Uploaded", uploaded_user_profile_path(@user_profile)
+    %li= link_to "Followees", uploaded_user_profile_path(@user_profile)
+    %li= link_to "Following", uploaded_user_profile_path(@user_profile)
+    %li= link_to "Wall", wall_user_profile_path(@user_profile)

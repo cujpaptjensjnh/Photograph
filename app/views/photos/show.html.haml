@@ -1,0 +1,27 @@
+%p#notice= notice
+
+= image_tag(@photo.image_url.to_s, :alt => @photo.name, :class => "photo-display")
+
+.photo-info
+  %p
+    %b Name:
+    = @photo.name
+  %p
+    %b Info:
+    = @photo.info
+  %p
+    %b Category:
+    = @photo.category.name
+  %p
+    %b User:
+    = @photo.user.username
+  - if user_signed_in? && current_user.id == @photo.user.id
+    = link_to 'Edit', edit_photo_path(@photo)
+    \|
+  = link_to 'Back', photos_path
+
+#related-photos
+  %h3 Related Photos:
+  - @photos.each do |photo|
+    %p.grid-photos
+      = link_to image_tag(photo.image_url(:thumb).to_s, :alt => photo.name), photo

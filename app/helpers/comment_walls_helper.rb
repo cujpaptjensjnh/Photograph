@@ -1,0 +1,2 @@
+module CommentWallsHelper
+end

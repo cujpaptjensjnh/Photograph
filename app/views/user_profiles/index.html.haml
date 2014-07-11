@@ -1,0 +1,37 @@
+%h1.form-title Listing user_profiles
+
+%table.table
+  %tr
+    %th Firstname
+    %th Lastname
+    %th Description
+    %th Job
+    %th Gender
+    %th Birthday
+    %th Avatar
+    %th User
+    %th
+    %th
+    %th
+
+  - @user_profiles.each do |user_profile|
+    %tr
+      %td= user_profile.firstname
+      %td= user_profile.lastname
+      %td= user_profile.description
+      %td= user_profile.job
+      %td
+        - if user_profile.gender == true
+          male
+        - else
+          female
+      %td= user_profile.birthday
+      %td= image_tag(user_profile.avatar_url(:thumb).to_s, alt: "user avatar")
+      %td= user_profile.user.username
+      %td= link_to 'Show', uploaded_user_profile_path(user_profile)
+      %td= link_to 'Edit', edit_user_profile_path(user_profile)
+      %td= link_to 'Destroy', user_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Create your profile', new_user_profile_path

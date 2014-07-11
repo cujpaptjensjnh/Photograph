@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %title Photograph
+    = stylesheet_link_tag    "application", :media => "all"
+    / = stylesheet_link_tag "/lib/jquery.bxslider.css"
+    = stylesheet_link_tag "/assets/bjqs.css"
+    = csrf_meta_tags
+  %body
+    #wrapper
+      #header
+        #header_top            
+          = image_tag("/assets/w3logotest2.png", :alt => "header_logo", :id => "header_logo")
+          = form_tag photos_path, method: "get", class: "form-inline", id: "search_photos" do
+            = text_field_tag :search, params[:search]
+            = submit_tag "search", :name => nil, :class => "btn btn-info"
+        #header_nav.clearfix
+          %ul#main-nav.nav.nav-pills
+            %li= link_to "Users", user_profiles_path
+            %li= link_to "All Photos", all_photos_path
+            / %li= link_to "Photos", photos_path
+          %p#userstate
+            - if user_signed_in?
+              #{current_user.username}
+              \ | #{link_to "sign out", destroy_user_session_path, :method => "delete"}
+            - else
+              = link_to "sign up", new_user_registration_path
+              or #{link_to "sign in", new_user_session_path}
+      #container.clearfix
+        = yield
+      #footer
+        %p.notice= notice
+        %p.alert= alert
+  = javascript_include_tag "application"
+  / = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+  / = javascript_include_tag "/js/jquery.bxslider.min.js"
+  = javascript_include_tag "http://code.jquery.com/jquery-latest.min.js"
+  = javascript_include_tag "/assets/bjqs.min.js" 

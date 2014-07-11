@@ -1,0 +1,33 @@
+/ %h1.form-title Listing photos
+/ / = paginate @photos
+/ / = paginate @photos, window: 2
+/ / = paginate @photos, outer_window: 1
+/ / = paginate @photos, :left => 1, :right => 3
+/ = paginate @photos, :theme => 'twitter-bootstrap'
+/ / = paginate @photos, :theme => 'twitter-bootstrap-3'
+/ / = paginate @photos, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm"
+/ / = paginate @photos, :theme => 'twitter-bootstrap', :pagination_class => "pagination-small pagination-centered"
+/ %p= page_entries_info @photos
+
+/ .display-grid-photos
+/   - @photos.each do |photo|
+/     %p.grid-photos
+/       = link_to image_tag(photo.image_url(:thumb).to_s, :alt => photo.name), photo
+/       - if user_signed_in? && current_user.id == photo.user.id
+/         = link_to 'Edit', edit_photo_path(photo)
+/         \|
+/         = link_to 'Destroy', photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+/ = link_to 'New Photo', new_photo_path
+
+/ %ul.bxslider
+#banner-slide
+  %ul.bjqs
+    - @photos.each do |photo|
+      %li= image_tag(photo.image_url.to_s, :alt => photo.name)
+
+/ - i = 0
+/ #bx-pager
+/   - @photos.each do |photo|
+/     %a{"data-slide-index" => "0", href: ""}
+/       %img{src: photo.image_url(:thumb).to_s}
+/     - i = i + 1

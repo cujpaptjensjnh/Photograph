@@ -1,0 +1,60 @@
+// Place all the styles related to the Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.display-grid-photos{
+	width: 100%;
+	float:left;
+}
+
+.grid-photos{
+	float: left;
+	width: 100px;
+	text-align: center;
+	padding: 5px 0px;
+	margin: 5px;
+	border: solid 1px #eee;
+
+	a {
+		text-align: center;
+		img{
+			margin-left: 18px;
+			display: block;
+			width: 64px;
+			height: 48px;
+		}
+	}
+}
+
+.photo-display{
+	float: left;
+	display: block;
+	width: 640px;
+	height: 480px;
+}
+
+.photo-nav{
+	margin-top:5px;
+	float: left;
+	width: 100%;
+	ul{
+		li{
+			float: left;
+			display: block;
+			width: 33%;
+			border: solid 1px #eee;
+			border-left: none;
+			text-align: center;
+			font-size: 15px;
+			a:hover{
+				background: transparent;
+				color: blue;
+				text-decoration: none;
+			}
+		}
+
+		li:first-child{
+			border-left: solid 1px #eee;
+		}
+	}
+}

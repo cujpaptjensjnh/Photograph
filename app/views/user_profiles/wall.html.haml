@@ -1,0 +1,21 @@
+= render "/user_profiles/profile"
+
+.comment-post
+  = render "/comment_walls/form", :user_profile_id => @user_profile.id
+
+/ = render @user_profile.comment_walls
+.comment-posted
+  - i = 1
+  - @comments.each do |comment_wall|
+    - if i%2 == 0
+      %p.comment-posted-even.clearfix
+        = image_tag(comment_wall.user.user_profile.avatar_url(:thumb).to_s, alt: "user avatar")
+        %textarea= comment_wall.body
+
+    - else
+      %p.clearfix
+        = image_tag(comment_wall.user.user_profile.avatar_url(:thumb).to_s, alt: "user avatar")
+        %textarea= comment_wall.body
+    - i = i + 1
+
+= paginate @comments, :theme => 'twitter-bootstrap'

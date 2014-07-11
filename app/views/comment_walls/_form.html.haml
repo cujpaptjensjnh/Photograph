@@ -1,0 +1,8 @@
+= simple_form_for(@comment_wall, html: {:class => 'form-inline'}) do |f|
+  = f.error_notification
+  %p
+    Place a Comment:
+    %br
+    = f.input :body, label: false, input_html: {:wrap => :soft, rows: 3, :class => "comment-body"}
+    = f.submit "post", :class => "submit-comment btn btn-info"
+    = f.hidden_field :user_profile_id, :value => user_profile_id

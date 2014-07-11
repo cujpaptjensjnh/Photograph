@@ -1,0 +1,52 @@
+// Place all the styles related to the UserProfiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.avatar-display{
+	float: left;
+	margin-left: 25px;
+	display: block;
+	width: 200px;
+	height: 200px;
+}
+
+.user_profile-info{
+	margin-left: 250px;
+
+	p {
+		font-size: 17px;
+	}
+}
+
+.user-nav{
+	margin-top:5px;
+	float: left;
+	width: 100%;
+	ul{
+		li{
+			float: left;
+			display: block;
+			width: 24.5%;
+			border: solid 1px #eee;
+			border-left: none;
+			text-align: center;
+			font-size: 15px;
+			a:hover{
+				background: transparent;
+				color: blue;
+				text-decoration: none;
+			}
+		}
+
+		li:first-child{
+			border-left: solid 1px #eee;
+		}
+	}
+}
+
+.pagination{
+	margin: 10px 0;
+	margin-right: 20px;
+	float:right;
+}
+
